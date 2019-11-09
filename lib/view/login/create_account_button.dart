@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebaselogin/user_repository.dart';
-import 'package:firebaselogin/register/register.dart';
+import 'package:firebaselogin/view/register/register.dart';
 
 class CreateAccountButton extends StatelessWidget {
   final UserRepository _userRepository;

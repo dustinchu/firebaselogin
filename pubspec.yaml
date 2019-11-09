@@ -30,9 +30,13 @@ dependencies:
   #BLOC
   bloc: ^0.15.0
   flutter_bloc: ^0.21.0
+  equatable: ^0.2.0
   #icon
   font_awesome_flutter: ^8.5.0
-  equatable: ^0.2.0
+  #得到設備id
+  device_info: ^0.4.0+4
+  #uuid
+  uuid: 2.0.1
   meta: ^1.1.6
   http: ^0.12.0+2
 dev_dependencies:

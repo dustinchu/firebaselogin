@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebaselogin/user_repository.dart';
-import 'package:firebaselogin/login/login.dart';
+import 'package:firebaselogin/view/login/login.dart';
 
 class LoginScreen extends StatelessWidget {
   final UserRepository _userRepository;

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "474391158917",
+    "firebase_url": "https://fir-login-9f840.firebaseio.com",
+    "project_id": "fir-login-9f840",
+    "storage_bucket": "fir-login-9f840.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474391158917:android:7495216889d526a16509ec",
+        "android_client_info": {
+          "package_name": "ecocode.wisplu.com.firebaselogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474391158917-vsoso81ngik77hrlf0fagn9dm1di7mvk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ecocode.wisplu.com.firebaselogin",
+            "certificate_hash": "6f15e2a269d92bb85e3b60d24ff806274e103a63"
+          }
+        },
+        {
+          "client_id": "474391158917-9gpgjjn5s9tt0kvme5ge3rlidpu606r4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8aS_GSujXsATZ5ifWtDHsRh_wQ4qDGX0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474391158917-9gpgjjn5s9tt0kvme5ge3rlidpu606r4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "474391158917-ttj8ku2lunmbo773seijkvcj5g264puo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ecocode.wisplu.com.firebaselogin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -19,7 +19,7 @@ class DeviceAuthenticate {
       //設備不一樣
       case "false":
         final bool isUpdateDeviceID =
-            await _userFirebaseStoreLoginData.updateDeviceID(deviceID);
+            await _userFirebaseStoreLoginData.updateDeviceID(email, deviceID);
         if (isUpdateDeviceID)
           result = true;
         else
@@ -78,11 +78,11 @@ class UserFirebaseStoreLoginData {
     }
   }
 
-  Future<bool> updateDeviceID(String deviceID) async {
+  Future<bool> updateDeviceID(String email, String deviceID) async {
     try {
       bool result = await Firestore.instance
-          .collection('bandnames')
-          .document('email')
+          .collection('user')
+          .document(email)
           .updateData({'deviceID': deviceID}).then((documentSnapshot) {
         print('updateDeviceID successful');
         return true;

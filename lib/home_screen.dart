@@ -1,11 +1,9 @@
-import 'package:firebaselogin/user_firestore_loginData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebaselogin/bloc/authentication_bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/index/bloc.dart';
-import 'deviceID.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Widget _build(BuildContext context) {
   return new StreamBuilder(
@@ -29,6 +27,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //  *需輸入在第一個頁面
+//  设置适配尺寸 (填入设计稿中设备的屏幕尺寸) 假如设计稿是按iPhone6的尺寸设计的(iPhone6 750*1334)*/
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
+
     return BlocProvider(
       builder: (context) => IndexBloc()..dispatch(InitIndex()),
       child: Scaffold(
@@ -45,40 +47,44 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-        body: BlocBuilder<IndexBloc,IndexState>(
-          builder: (context,state) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Center(child: Text('Welcome $name!')),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  onPressed: () async {
-                    BlocProvider.of<IndexBloc>(context).dispatch(MinusIndex());
-                  },
-                  child: Text('minus'),
+        body: BlocBuilder<IndexBloc, IndexState>(builder: (context, state) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Center(child: Text('Welcome $name!')),
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  onPressed: ()  {
-                    BlocProvider.of<IndexBloc>(context).dispatch(AddIndex());
-                  },
-                  child: Text('add'),
+                onPressed: () async {
+                  BlocProvider.of<IndexBloc>(context).dispatch(MinusIndex());
+                },
+                child: Text('minus'),
+              ),
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                Container(
-                  child: _build(context),
-                ),
-                Container(
-                  child: Text(state.isIndex.toString()),
-                )
-              ],
-            );
-          }
-        ),
+                onPressed: () {
+                  Firestore.instance
+                      .collection('bandnames')
+                      .document(name)
+                      .updateData({'deviceID': 12345}).then((documentSnapshot) {
+                    print('updateDeviceID successful');
+                  });
+//                  BlocProvider.of<IndexBloc>(context).dispatch(AddIndex());
+                },
+                child: Text('add'),
+              ),
+              Container(
+                child: _build(context),
+              ),
+              Container(
+                child: Text(state.isIndex.toString()),
+              )
+            ],
+          );
+        }),
       ),
     );
   }
